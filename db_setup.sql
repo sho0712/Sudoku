@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS sudoku_db;
+CREATE USER IF NOT EXISTS testuser
+    IDENTIFIED BY '9999';
+GRANT ALL ON sudoku_db.* TO testuser;
