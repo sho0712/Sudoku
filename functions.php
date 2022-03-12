@@ -158,7 +158,7 @@ function update_task($id, $title)
     $dbh = connect_db();
     $sql = <<< EOM
     UPDATE
-        tasks
+        kadai3
     SET
         title = :title
     WHERE
@@ -186,16 +186,16 @@ function delete_task($id)
     $stmt->execute();
 }
 
-function input_task($title,$status)
+function input_task($title,$id)
 {
     $dbh = connect_db();
     $sql = <<< EOM
-    UPDATE
+    SELECT
+        *
+    FROM
         kadai3
-    SET
-        status = :status
     WHERE
-        title = :title
+        id BETWEEN 1 AND 16;
     EOM;
 
     $stmt = $dbh->prepare($sql);
