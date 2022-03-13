@@ -8,24 +8,70 @@ $errors = '';
 $place = '';
 $status = '';
 
-$sudoku = [4, 2, 1, 3, 3, 1, 2, 4, 2, 3, 4, 1, 1, 4, 3, 2];
+$sudoku = [4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 4, 0, 0, 0, 0, 2];
+// $sudoku = [4, 3, 2, 1, 2, 1, 3, 4, 1, 2, 4, 3, 3, 4, 1, 2];
+var_dump($sudoku);
+
+?>
+
+<?php
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $sudoku[0] = filter_input(INPUT_POST, 'title');
-    $status = filter_input(INPUT_POST, 'status');
-    $errors = insert_validate($title);
-    if (empty($errors)) {
-        insert_task($title);
+    if (($sudoku[0]==0)) {
+        $sudoku[0] = filter_input(INPUT_POST, 'A_1');
+        
+    }
+    if ($sudoku[1] == 0) {
+        
+        $sudoku[1] = filter_input(INPUT_POST, 'A_2');
+        $sudoku[1]= intval($sudoku[1]);
+        var_dump($sudoku);
+    }
+    if ($sudoku[2] == 0) {
+        $sudoku[2] = filter_input(INPUT_POST, 'A_3');
+    }
+    if ($sudoku[3] == 0) {
+        $sudoku[3] = filter_input(INPUT_POST, 'A_4');
+    }
+    if ($sudoku[4] == 0) {
+        $sudoku[4] = filter_input(INPUT_POST, 'B_1');
+    }
+    if ($sudoku[5] == 0) {
+        $sudoku[5] = filter_input(INPUT_POST, 'B_2');
+    }
+    if ($sudoku[6] == 0) {
+        $sudoku[6] = filter_input(INPUT_POST, 'B_3');
+    }
+    if ($sudoku[7] == 0) {
+        $sudoku[7] = filter_input(INPUT_POST, 'B_4');
+    }
+    if ($sudoku[8] == 0) {
+        $sudoku[8] = filter_input(INPUT_POST, 'C_1');
+    }
+    if ($sudoku[9] == 0) {
+        $sudoku[9] = filter_input(INPUT_POST, 'C_2');
+    }
+    if ($sudoku[10] == 0) {
+        $sudoku[10] = filter_input(INPUT_POST, 'C_3');
+    }
+    if ($sudoku[11] == 0) {
+        $sudoku[11] = filter_input(INPUT_POST, 'C_4');
+    }
+    if ($sudoku[12] == 0) {
+        $sudoku[12] = filter_input(INPUT_POST, 'D_1');
+    }
+    if ($sudoku[13] == 0) {
+        $sudoku[13] = filter_input(INPUT_POST, 'D_2');
+    }
+    if ($sudoku[14] == 0) {
+        $sudoku[14] = filter_input(INPUT_POST, 'D_3');
+    }
+    if ($sudoku[15] == 0) {
+        $sudoku[15] = filter_input(INPUT_POST, 'D_4');
     }
 }
 
-// 未完了タスク
-$notyet_tasks = find_task_by_status(TASK_STATUS_NOTYET);
-//var_dump($notyet_tasks);
-
-//完了タスク
-//$done_tasks = find_task_by_status(TASK_STATUS_DONE);
-//var_dump($done_tasks);
 
 ?>
 
@@ -62,7 +108,7 @@ $notyet_tasks = find_task_by_status(TASK_STATUS_NOTYET);
                     </tr>
                     <tr height="50">
                         <td align="center">２行</td>
-                        <td align="center"><?= $status ?></td>
+                        <td align="center"><?= $sudoku[4] ?></td>
                         <td align="center"><?= $sudoku[5] ?></td>
                         <td align="center"><?= $sudoku[6] ?></td>
                         <td align="center"><?= $sudoku[7] ?></td>
@@ -110,13 +156,27 @@ $notyet_tasks = find_task_by_status(TASK_STATUS_NOTYET);
                 <li>各小さな枠に数字１～４を、それぞれ一度だけ使える。</li>
             </ul>
             <form action="" method="post">
-                <input type="text" name="title" placeholder="数字を入力してください　例：３">
-                <input type="text" name="status" placeholder="数字を入力してください　例：３">
-                <input type="submit" value="A1登録" class="btn submit-btn">
-            </form>
-            <form action="" method="post">
+                <input type="text" name="A_1" placeholder="A1の数字を入力してください　例：３">
+                <input type="text" name="A_2" placeholder="A2の数字を入力してください　例：３">
+                <input type="text" name="A_3" placeholder="A3の数字を入力してください　例：３">
+                <input type="text" name="A_4" placeholder="A4の数字を入力してください　例：３">
+                <input type="text" name="B_1" placeholder="B1の数字を入力してください　例：３">
+                <input type="text" name="B_2" placeholder="B2の数字を入力してください　例：３">
+                <input type="text" name="B_3" placeholder="B3の数字を入力してください　例：３">
+                <input type="text" name="B_4" placeholder="B4の数字を入力してください　例：３">
+                <input type="text" name="C_1" placeholder="C1の数字を入力してください　例：３">
+                <input type="text" name="C_2" placeholder="C2の数字を入力してください　例：３">
+                <input type="text" name="C_3" placeholder="C3の数字を入力してください　例：３">
+                <input type="text" name="C_4" placeholder="C4の数字を入力してください　例：３">
+                <input type="text" name="D_1" placeholder="D1の数字を入力してください　例：３">
+                <input type="text" name="D_2" placeholder="D2の数字を入力してください　例：３">
+                <input type="text" name="D_3" placeholder="D3の数字を入力してください　例：３">
+                <input type="text" name="D_4" placeholder="D4の数字を入力してください　例：３">
                 <input type="submit" value="解答" class="btn submit-btn">
             </form>
+            <!-- <form action="" method="post">
+                <input type="submit" value="解答" class="btn submit-btn">
+            </form> -->
         </div>
         <!-- <div class="notyet-task">
             <h2>入力履歴</h2>

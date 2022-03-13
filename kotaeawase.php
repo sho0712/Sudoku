@@ -22,12 +22,14 @@ $sql = <<<EOM
 //プライペアドステートメント
 $stmt = $dbh->prepare($sql);
 
-$stmt->bindParam(':status', $status, PDO::PARAM_STR);
+//$stmt->bindParam(':status', $status, PDO::PARAM_STR);
 
 $stmt->execute();
+
+
 //$a = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //var_dump($a);
 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+var_dump($stmt);
 
 ?>
