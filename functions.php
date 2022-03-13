@@ -203,3 +203,8 @@ function input_task($title,$id)
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 }
+
+function seikai_task($sudoku)
+{
+    $sudoku = [4, 3, 2, 1, 2, 1, 3, 4, 1, 2, 4, 3, 3, 4, 1, 2];
+    }
